@@ -1,0 +1,9 @@
+RewriteEngine On
+
+#  Permite acceder directamente a archivos existentes como imágenes, CSS, JS
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+#  Redirige solo lo que no sea archivo o directorio real
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
