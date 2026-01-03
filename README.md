@@ -58,6 +58,72 @@ pasteleria_pro/
 
 ---
 
+## 🗄️ Base de datos
+
+La base de datos del sistema está diseñada en **MySQL** y soporta la gestión completa de productos, usuarios, pedidos, pagos y entregas.
+
+### 📂 Script SQL
+
+El script de la base de datos se encuentra en:
+
+```
+database/pasteleria.sql
+```
+
+Este archivo incluye:
+
+* Creación de tablas
+* Relaciones (claves foráneas)
+* Datos de prueba para demostración
+
+---
+
+### 🧩 Tablas principales
+
+* **usuarios**: gestión de cuentas (admin / cliente)
+* **empleados**: personal del sistema
+* **roles**: control de permisos
+* **categorias**: clasificación de productos
+* **productos**: catálogo de la pastelería
+* **ventas**: pedidos realizados
+* **detalles_ventas**: detalle de productos por pedido
+* **pedidos_personalizados**: pedidos especiales
+* **entregas**: seguimiento de entregas
+* **transacciones_pagos**: control de pagos
+
+---
+
+### 🔗 Relaciones destacadas
+
+* Un **usuario** puede realizar muchos **pedidos**
+* Una **venta** tiene muchos **detalles_ventas**
+* Un **producto** pertenece a una **categoría**
+* Una **venta** puede tener una **entrega** asociada
+
+---
+
+### ⚙️ Importación de la base de datos
+
+1. Crear una base de datos llamada:
+
+```
+pasteleria_db
+```
+
+2. Importar el archivo:
+
+```
+database/pasteleria.sql
+```
+
+3. Configurar la conexión en:
+
+```
+config/database.php
+```
+
+---
+
 ## 🧰 Tecnologías utilizadas
 
 * **PHP 8+**
