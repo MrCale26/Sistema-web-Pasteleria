@@ -1,0 +1,135 @@
+# 🍰 Sistema Web de Pastelería
+
+Sistema Web de Pastelería desarrollado en **PHP bajo el patrón MVC**, orientado a la gestión de productos, pedidos y pagos, con un panel de administración y un panel para clientes.
+
+Este proyecto fue desarrollado como un sistema completo que simula el funcionamiento real de una pastelería, permitiendo ventas en línea, pedidos personalizados y control administrativo.
+
+---
+
+## 📌 Características principales
+
+### 👤 Cliente
+
+* Registro e inicio de sesión
+* Catálogo de productos por categorías
+* Carrito de compras
+* Realización de pedidos
+* Pagos (simulación / integración preparada)
+* Historial de pedidos
+* Panel de cliente
+
+### 🛠️ Administrador
+
+* Dashboard administrativo
+* Gestión de productos (CRUD)
+* Gestión de categorías
+* Gestión de usuarios y empleados
+* Visualización y control de pedidos
+* Seguimiento de entregas
+* Reportes y pagos
+
+---
+
+## 🧱 Arquitectura del sistema
+
+El proyecto sigue el patrón **MVC (Modelo – Vista – Controlador)**:
+
+* **Models**: Manejo de datos y lógica de negocio
+* **Controllers**: Control del flujo de la aplicación
+* **Views**: Interfaz de usuario (admin y cliente)
+
+---
+
+## 🗂️ Estructura del proyecto
+
+```
+pasteleria_pro/
+│── assets/            # Imágenes, videos y recursos
+│── config/            # Configuración y conexión a BD
+│── controllers/       # Controladores MVC
+│── helpers/           # Funciones auxiliares
+│── models/            # Modelos
+│── public/            # CSS y recursos públicos
+│── uploads/           # Imágenes de productos (ignorado en Git)
+│── views/             # Vistas del sistema
+│── index.php          # Punto de entrada
+│── .htaccess          # Reglas de rutas
+```
+
+---
+
+## 🧰 Tecnologías utilizadas
+
+* **PHP 8+**
+* **MySQL**
+* **HTML5 / CSS3**
+* **JavaScript**
+* **Bootstrap**
+* **Git & GitHub**
+* **XAMPP** (entorno local)
+
+---
+
+## ⚙️ Instalación y ejecución (XAMPP)
+
+1. Clonar el repositorio:
+
+```bash
+git clone https://github.com/MrCale26/Sistema-web-Pasteleria.git
+```
+
+2. Copiar el proyecto en:
+
+```
+C:/xampp/htdocs/
+```
+
+3. Crear la base de datos en **phpMyAdmin**
+
+4. Configurar la conexión en:
+
+```
+config/database.php
+```
+
+5. Iniciar Apache y MySQL desde XAMPP
+
+6. Acceder desde el navegador:
+
+```
+http://localhost/pasteleria_pro
+```
+
+---
+
+## 🔐 Seguridad
+
+* Contraseñas cifradas
+* Manejo de sesiones
+* Separación de roles (admin / cliente)
+* Acceso controlado a vistas administrativas
+
+---
+
+## 📸 Capturas del sistema
+
+> Se recomienda agregar capturas del:
+
+* Catálogo de productos
+* Carrito de compras
+* Panel administrador
+* Dashboard
+
+---
+
+## 👨‍💻 Autor
+
+**Alexander Capitan**
+Desarrollador Web
+GitHub: [MrCale26](https://github.com/MrCale26)
+
+---
+
+## 📄 Licencia
+
+Proyecto desarrollado con fines académicos y educativos.
