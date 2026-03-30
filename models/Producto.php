@@ -137,13 +137,39 @@ class Producto {
         return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
     }
 
-    public function buscar($query) {
-        $query = $this->db->real_escape_string($query);
-        $sql = "SELECT * FROM productos 
-                WHERE nombre LIKE '%$query%' 
-                OR descripcion LIKE '%$query%' 
-                ORDER BY id DESC";
-        $result = $this->db->query($sql);
+    public function buscar($query = '', $categoria_id = null) {
+        $query = trim((string)$query);
+        $params = [];
+        $types = '';
+
+        $sql = "SELECT * FROM productos WHERE 1=1";
+
+        if ($categoria_id !== null && $categoria_id !== '') {
+            $sql .= " AND categoria_id = ?";
+            $params[] = intval($categoria_id);
+            $types .= 'i';
+        }
+
+        if ($query !== '') {
+            $like = '%' . $query . '%';
+            $sql .= " AND (nombre LIKE ? OR descripcion LIKE ?)";
+            $params[] = $like;
+            $params[] = $like;
+            $types .= 'ss';
+        }
+
+        $sql .= " ORDER BY id DESC";
+        $stmt = $this->db->prepare($sql);
+        if (!$stmt) {
+            return [];
+        }
+
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+
+        $stmt->execute();
+        $result = $stmt->get_result();
         return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
     }
 
@@ -251,10 +277,58 @@ class Producto {
     }
 
     public function getDestacados() {
-    $sql = "SELECT * FROM productos WHERE destacado = 1 ORDER BY id DESC LIMIT 6";
-    $result = $this->db->query($sql);
-    return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
-}
+        $sql = "SELECT * FROM productos WHERE destacado = 1 ORDER BY id DESC LIMIT 6";
+        $result = $this->db->query($sql);
+        return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    }
+
+    public function buscarConFiltros($query = '', $categoriaId = null, $precioMin = null, $precioMax = null) {
+        $query = trim((string)$query);
+        $params = [];
+        $types = '';
+
+        $sql = "SELECT * FROM productos WHERE 1=1";
+
+        if ($categoriaId !== null && $categoriaId !== '') {
+            $sql .= " AND categoria_id = ?";
+            $params[] = intval($categoriaId);
+            $types .= 'i';
+        }
+
+        if ($query !== '') {
+          $like = '%' . $query . '%';
+          $sql .= " AND (nombre LIKE ? OR descripcion LIKE ?)";
+          $params[] = $like;
+          $params[] = $like;
+          $types .= 'ss';
+        }
+
+        if ($precioMin !== null) {
+            $sql .= " AND precio >= ?";
+            $params[] = floatval($precioMin);
+            $types .= 'd';
+        }
+
+        if ($precioMax !== null) {
+            $sql .= " AND precio <= ?";
+            $params[] = floatval($precioMax);
+            $types .= 'd';
+        }
+
+        $sql .= " ORDER BY id DESC";
+        $stmt = $this->db->prepare($sql);
+        if (!$stmt) {
+            return [];
+        }
+
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    }
 
 
 
