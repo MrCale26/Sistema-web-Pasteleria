@@ -1,0 +1,17 @@
+/uploads/
+/vendor/
+.env
+
+# Frontend/package managers
+/node_modules/
+
+# Logs and runtime artifacts
+*.log
+*.tmp
+*.temp
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
