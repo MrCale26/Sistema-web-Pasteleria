@@ -199,3 +199,5 @@ GitHub: [MrCale26](https://github.com/MrCale26)
 ## 📄 Licencia
 
 Proyecto desarrollado con fines académicos y educativos.
+
+- Nota de practica Git: rama, commit, push, PR y merge.
