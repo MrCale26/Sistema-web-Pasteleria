@@ -54,7 +54,9 @@ class ProductoController {
             [$precioMin, $precioMax] = [$precioMax, $precioMin];
         }
 
-        $productos = $producto->buscar($query, $categoriaId, $precioMin, $precioMax );
+        $productos = $producto->buscarConFiltros($query, $categoriaId, $precioMin, $precioMax);
+
+
         $categorias = $cat->getAll();
 
         require_once 'views/productos/catalogo.php';
