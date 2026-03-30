@@ -270,7 +270,30 @@
       <input type="text" name="query" class="form-control shadow-sm" placeholder="Buscar por nombre o descripción..." value="<?= htmlspecialchars($_GET['query'] ?? '') ?>">
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-2">
+      <input 
+      type="number"
+      name="precio_min"
+      class="form-control shadow-sm"
+      min="0"
+      step="0.01"
+      placeholder="Precio mínimo"
+      value="<?= htmlspecialchars($_GET['precio_min'] ?? '') ?>">
+    </div>
+
+    <div class="col-md-2">
+      <input 
+      type="number"
+      name="precio_max"
+      class="form-control shadow-sm"
+      min="0"
+      step="0.01"
+      placeholder="Precio máximo"
+      value="<?= htmlspecialchars($_GET['precio_max'] ?? '') ?>"
+      >
+    </div>
+
+    <div class="col-md-2">
       <button type="submit" class="btn btn-success w-100 shadow-sm"><i class="bi bi-search"></i> Buscar</button>
     </div>
   </form>

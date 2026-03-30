@@ -46,8 +46,15 @@ class ProductoController {
 
         $query = $_GET['query'] ?? '';
         $categoriaId = !empty($_GET['categoria_id']) ? $_GET['categoria_id'] : null;
+        $precioMin = (isset($_GET['precio_min']) && $_GET['precio_min'] !== '') ? floatval($_GET['precio_min']) : null;
+        $precioMax = (isset($_GET['precio_max']) && $_GET['precio_max'] !== '') ? floatval($_GET['precio_max']) : null;
 
-        $productos = $producto->buscar($query, $categoriaId);
+        //Si vienen invertidos los corregimos
+        if($precioMin !== null && $precioMax !==null && $precioMin > $precioMax){
+            [$precioMin, $precioMax] = [$precioMax, $precioMin];
+        }
+
+        $productos = $producto->buscar($query, $categoriaId, $precioMin, $precioMax );
         $categorias = $cat->getAll();
 
         require_once 'views/productos/catalogo.php';
